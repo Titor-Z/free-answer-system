@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用户管理·后台管理</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+    <header class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Management</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">首页</a></li>
+                    <li class="active"><a href="#">用户管理</a></li>
+                    <li><a href="{:U('Subject/index')}">答题</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav pull-right">
+                    <li><a>欢迎 {$userName}</a></li>
+                    <li><a href="{:U('Login/logout')}">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </header> <!-- header End. -->
+
+    <div class="row">
+        <!-- left Start. -->
+        <div class="col-sm-3">
+            <ul class="list-group">
+                <a href="{:U('')}" class="list-group-item">用户分组</a>
+                <a href="{:U('?group=1')}" class="list-group-item active">超级管理员</a>
+                <a href="#" class="list-group-item">管理员</a>
+                <a href="#" class="list-group-item">用户</a>
+            </ul>
+        </div> <!-- left End. -->
+
+        <?php if ($_GET['group']==1) { ?>
+        <div class="col-sm-3 col-sm-o">
+            <div class="list-group">
+                <a href="{:U('?group=1&user=true')}" class="list-group-item active">
+                    <h4 class="list-group-item-heading">Admin</h4>
+                    <p class="list-group-item-text">网站超级管理员，拥有最高级别的权限管理</p>
+                </a>
+                <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">Root</h4>
+                    <p class="list-group-item-text">网站超级管理员，拥有最高级别的权限管理</p>
+                </a>
+                <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">Mike</h4>
+                    <p class="list-group-item-text">网站超级管理员，拥有最高级别的权限管理</p>
+                </a>
+                <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">John</h4>
+                    <p class="list-group-item-text">网站超级管理员，拥有最高级别的权限管理</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Right Start. -->
+
+        <?php if($_GET['user']==true) { ?>
+        <div class="col-sm-6">
+            <form class="form-horizontal" name="userInformation" method="post" action="{:U('userUpdate')}">
+                <div class="form-group">
+                    <div class="thumbnail col-sm-3 col-sm-offset-5" style="border:0;">
+                        <img src="http://4y.hdayyy.com/Public/assets/images/gallery/image-6.jpg" alt="用户头像" class="img-circle">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">ID</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">{$userID}</p>
+                        <input type="hidden" class="form-control form-control-static" name="id" value="{$userID}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="username" class="col-sm-2 control-label">用户名</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="username" name="username" placeholder="{$userName}" value="{$userName}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">邮箱</label>
+                    <div class="col-sm-10">
+                        <p class=" form-control-static">{$userEmail}</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-5 col-sm-offset-2">
+                        <label class="radio-inline">
+                            <?php if($userSex==1){ ?>
+                            <input name="sex" type="radio" value="1" checked> 男
+                            <?php }else{ ?>
+                            <input name="sex" type="radio" value="1"> 男
+                            <?php } ?>
+                        </label>
+                        <label class="radio-inline">
+                            <?php if($userSex==0){ ?>
+                            <input name="sex" type="radio" value="0" checked> 女
+                            <?php }else{ ?>
+                            <input name="sex" type="radio" value="0"> 女
+                            <?php } ?>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-10 col-sm-offset-2">
+                        <select name="group" class="form-control">
+                            <option value="1">超级管理员</option>
+                            <option value="2">管理员</option>
+                            <option value="3">用户</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="col-sm-2 control-label">密码</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="password" name="password" value="" placeholder="请输入新密码">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-10 col-sm-offset-2">
+                        <input type="password" class="form-control" id="password2" name="password2" placeholder="再次输入">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">更新</button>
+                        <a href="{:U('?group=1')}" class="btn btn-default">返回</a>
+                    </div>
+                </div>
+            </form>
+        </div> <!-- Right End. -->
+        <?php }?>
+    <?php } ?>
+
+    </div>
+
+</div>
+
+
+</body>
+</html>

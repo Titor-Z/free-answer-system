@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{$name}</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        .option-container {
+            list-style: none;
+            padding: 4px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 18px;
+        }
+        .option-container li {
+            overflow: auto;
+            display: block;
+        }
+        .option-container input[type='checkbox'] {
+            height: 16px;
+            width: 16px;
+            margin: 16px 16px 10px 5px;
+            float: left;
+        }
+        .option-container .btn {
+            margin: 10px;
+            float: left;
+        }
+        .option-container p {
+            display: inline-block;
+            float: left;
+        }
+        .option-container .label {
+            height: 30px;
+            line-height: 26px;
+            margin: 10px
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">答题管理</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="{:U('Index/index')}">首页</a></li>
+                    <li><a href="{:U('Index/index')}">用户管理</a></li>
+                    <li><a href="{:U('Subject/index')}">答题管理</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav pull-right">
+                    <li><a>欢迎 {$userName}</a></li>
+                    <li><a href="{:U('Login/logout')}">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </header> <!-- header End. -->
+
+    <!-- left Start. -->
+    <div class="col-sm-3">
+        <div class="list-group">
+            <a href="{:U('add')}" class="list-group-item">添加题目</a>
+            <?php foreach($results as $id=>$val){ ?>
+            <a href="{:U('view?id='.$id)}" class="list-group-item"><?php echo $val;?></a>
+            <?php } ?>
+        </div>
+    </div> <!-- left End. -->
+
+    <!-- Right Start. -->
+    <div class="col-sm-9">
+        <!-- 查看题目 开始 -->
+        <?php if($_GET['subject'] == 'view'){ ?>
+        <div class="page-header">
+            <h1>这里是第一题的题目名称 <small><a href="#" class="btn btn-default">修改</a></small></h1>
+        </div>
+        <div>
+            <form action="#">
+                <header class="row">
+                    <div class="col-sm-12">
+                        <div class="btn-group pull-left">
+                            <a href="{:U('?option=add')}" class="btn btn-primary" href="#">添加</a>
+                            <a class="btn btn-danger" href="#">删除</a>
+                        </div>
+                        <header class="btn-group pull-right">
+                            <a class="btn btn-default" href="#">选择</a>
+                        </header>
+                    </div>
+
+                </header>
+
+                <hr>
+                <div class="row">
+                    <ul class="col-sm-12 option-container">
+                        <li>
+                            <a class="btn btn-sm btn-default" href="{:U('?option=edit')}">修改</a>
+                            <input type="checkbox">
+                            <p>你是否在这里想要选择</p>
+                            <span class="label label-default pull-right">30分</span>
+                        </li>
+                        <li>
+                            <a class="btn btn-sm btn-default" href="#">修改</a>
+                            <input type="checkbox">
+                            <p>你是否在这里想要选择</p>
+                            <span class="label label-default pull-right">30分</span>
+                        </li>
+                        <li>
+                            <a class="btn btn-sm btn-default" href="#">修改</a>
+                            <input type="checkbox">
+                            <p>你是否在这里想要选择</p>
+                            <span class="label label-default pull-right">30分</span>
+                        </li>
+                        <li>
+                            <a class="btn btn-sm btn-default" href="#">修改</a>
+                            <input type="checkbox">
+                            <p>你是否在这里想要选择</p>
+                            <span class="label label-default pull-right">30分</span>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </form>
+        </div>
+        <?php } ?>
+        <!-- 查看题目 结束 -->
+
+    </div> <!-- Right End. -->
+</div>
+
+
+</body>
+</html>

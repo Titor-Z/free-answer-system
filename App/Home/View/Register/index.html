@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注册·后台管理</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        body {
+            background: #1d2e3f;
+        }
+        .form-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 440px;
+            background: #ECF0F1;
+            padding: 40px 60px 20px 60px;
+            margin: -190px 0 0 -210px;
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            border-radius: 8px;
+            -webkit-box-shadow:0 0 8px 1px #BDC3C7;
+            -moz-box-shadow:0 0 8px 1px #BDC3C7;
+            box-shadow:0 0 8px 1px #BDC3C7;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <form class="form-horizontal form-center" name="registerForm" action="{:U('index')}" method="post">
+        <input name="state" type="hidden" value="toRegister">
+        <div class="form-group">
+            <label for="email" class="col-sm-2 control-label">邮箱</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="email" name="email" placeholder="输入您的邮箱" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="pasd" class="col-sm-2 control-label">密码</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="pasd" name="pasd" placeholder="请输入密码" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="pasd2" class="col-sm-2 control-label"></label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="pasd2" name="pasd2" placeholder="再次输入" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="checkbox col-sm-offset-3">
+                <label>
+                    <input name="ready" type="checkbox" checked> 我已阅读用户协议
+                </label>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">注册</button>
+                <a href="{:U('/Home/Login/index')}" class="btn btn-default col-sm-offset-1">返回</a>
+            </div>
+        </div>
+
+    </form> <!-- 登录表单结束 -->
+</div>
+
+</body>
+</html>

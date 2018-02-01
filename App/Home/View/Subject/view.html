@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{$name}</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        .option-container {
+            list-style: none;
+            padding: 4px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 18px;
+        }
+        .option-container li {
+            overflow: auto;
+            display: block;
+        }
+        .option-container input[type='checkbox'] {
+            height: 16px;
+            width: 16px;
+            margin: 16px 16px 10px 5px;
+            float: left;
+        }
+        .option-container .btn {
+            margin: 10px;
+            float: left;
+        }
+        .option-container p {
+            display: inline-block;
+            float: left;
+        }
+        .option-container .label {
+            height: 30px;
+            line-height: 26px;
+            margin: 10px
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!--顶部导航 Start.-->
+    <header class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{:U('Index/index')}">答题系统</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="{:U('Index/index')}">首页</a></li>
+                    <li><a href="{:U('Index/index')}">用户管理</a></li>
+                    <li><a href="{:U('Subject/index')}">答题管理</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav pull-right">
+                    <li><a>欢迎 {$userName}</a></li>
+                    <li><a href="{:U('Login/logout')}">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </header> <!-- 顶部导航 End. -->
+
+    <!-- 左侧内容 Start. -->
+    <div class="col-sm-3">
+        <div class="list-group">
+            <a href="{:U('add')}" class="list-group-item">添加题目</a>
+            <?php foreach($results as $id=>$val){ ?>
+            <a href="{:U('view?id='.$id)}" class="list-group-item"><?php echo $val;?></a>
+            <?php } ?>
+        </div>
+    </div> <!-- 左侧内容 End. -->
+
+    <!-- 右侧内容 Start. -->
+    <div class="col-sm-9">
+        <!-- 当前导航位置 Start. -->
+        <ol class="breadcrumb row">
+            <li><a href="{:U('Subject/index')}">题目</a></li>
+            <li class="active">查看题目</li>
+        </ol> <!-- 当前导航位置 End. -->
+
+        <!-- 查看题目 Start. -->
+        <div class="page-header">
+            <h1>{$subName}
+                <small class="btn-group">
+                    <a href="{:U('edit?id='.$subID)}" class="btn btn-default">修改</a>
+                    <a href="{:U('del?id='.$subID)}" class="btn btn-danger">删除</a>
+                </small>
+            </h1>
+        </div>
+        <div>
+            <form action="{:U('SubjectItem/del?itemid=')}" method="post">
+                <header class="row">
+                    <div class="col-sm-12">
+                        <div class="btn-group pull-left">
+                            <a href="{:U('SubjectItem/details?id='.$subID.'&s=add')}" class="btn btn-primary">添加</a>
+                            <button type="submit" class="btn btn-danger">删除</button>
+                        </div>
+                        <header class="btn-group pull-right">
+                            <a class="btn btn-default" href="javascript:void(0)" data-checkBtn="selectAll">选择</a>
+                        </header>
+                    </div>
+
+                </header>
+
+                <hr>
+                <div class="row">
+                    <ul class="col-sm-12 option-container">
+                        <?php for($i=0; $i<count($itemRes); $i++) { ?>
+                        <li>
+                            <a class="btn btn-sm btn-default" href="{:U('SubjectItem/details?id='.$itemRes[$i]['id'].'&no='.I('id').'&s=edit')}">修改</a>
+                            <input name="check[]" data-check="option" type="checkbox" value="{$itemRes[$i]['id']}">
+                            <input name="id" type="hidden" value="<?php echo $itemRes[$i]['name'] ?>">
+                            <p><?php echo $itemRes[$i]['name']; ?></p>
+                            <span class="label label-default pull-right"><?php echo $itemRes[$i]['grade']; ?>&nbsp;分</span>
+                        </li>
+                        <?php } ?>
+                    </ul>
+
+                </div>
+
+            </form>
+        </div>
+        <!-- 查看题目 End. -->
+    </div> <!-- 右侧内容 End. -->
+</div>
+
+<script>
+    (function () {
+        // 获取所有的选框
+        // 如果没有被选中，则选中
+        function check(statue) {
+            // 获得选框元素
+            var checkbox = document.querySelectorAll("input[data-check]");
+            for (var i=0; i<checkbox.length; i++) {
+                var item = checkbox[i];
+                if (item.checked == true) {
+                    item.checked = false;
+                }
+                else {
+                    item.checked = true;
+                }
+            }
+        }
+        var btn = document.querySelector("[data-checkBtn]");
+        btn.addEventListener('click',check);
+    })();
+</script>
+</body>
+</html>
