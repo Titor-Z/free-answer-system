@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>开始答题</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <style>
+        body {
+            overflow: hidden;
+        }
+        .modal {
+            top: 30%;
+        }
+
+        li[data-check='check'] {
+            background: #1b93fb;
+            color: #FFFFFF;
+        }
+
+        #button {
+            margin-bottom: 40px;
+        }
+
+        .header {
+            background: #1b93fb;
+            font-size: 16px;
+            padding: 12px 0;
+            color: #fff;
+            position: fixed;
+            top: 0;
+            z-index: 100;
+        }
+        .header a {
+            font-size: 14px;
+            color: #fff;
+            margin: auto 8px;
+            float: left;
+        }
+
+        .question-title {
+            font-size: 14px;
+            text-align: left;
+            padding: 4px 0 6px 0;
+            line-height: 1.6;
+        }
+
+        .area {
+            overflow: auto;
+        }
+
+        main {
+            overflow: hidden;
+            margin-top: 36px;
+        }
+
+        .submit {
+            position: fixed;
+            bottom: 0;
+            z-index: 100;
+        }
+        .bg-display{
+            opacity: 1;
+            transition: opacity .5s;
+        }
+        .bg-hidden {
+            opacity: 0;
+            transition: opacity .25s;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container-fluid">
+    <header class="row">
+        <div class="header col-xs-12 text-center primary-color">
+            <a href="javascript:void(0)" class="pull-left">上一题</a>
+            <span class="col-xs-4 col-xs-offset-2">在线考试</span>
+        </div>
+    </header>
+    <main class="row">
+        <form action="index.php" method="post">
+            <!-- ############## 查询题目 Start. ################## -->
+            <div class="area display">
+                <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
+                    <h3 class="text-center question-title">1、妇科炎症有哪些？？？?妇科炎症有哪些？？？?妇科炎症有哪些？？？?妇科炎症有哪些？？？?</h3>
+                </div>
+                <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
+
+                    <ul class="list-group text-center" data-optionName="ans1">
+                        <input name="result[]" type="hidden" value="">
+
+                        <li class="list-group-item" data-check="">
+                            <input class="hidden" type="radio" name="ans1" value="100">
+                            金鸡胶囊爱护您
+                        </li>
+                        <li class="list-group-item" data-check="">
+                            <input class="hidden" type="radio" name="ans1" value="100">
+                            金鸡胶囊爱护您
+                        </li>
+                        <li class="list-group-item" data-check="">
+                            <input class="hidden" type="radio" name="ans1" value="100">
+                            金鸡胶囊爱护您
+                        </li>
+                        <li class="list-group-item" data-check="">
+                            <input class="hidden" type="radio" name="ans1" value="100">
+                            金鸡胶囊爱护您
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <!-- 第二道题 Start. -->
+            <div class="area">
+                <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
+                    <h3 class="text-center question-title">2、你是傻逼你怨谁?</h3>
+                </div>
+                <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
+
+                    <ul class="list-group text-center" data-optionName="ans4">
+                        <input name="result[]" type="hidden" value="">
+
+                        <li class="list-group-item" data-check="">
+                            <input class="hidden" type="radio" name="ans4" value="20">
+                            怨自己
+                        </li>
+                        <li class="list-group-item" data-check="">
+                            <input class="hidden" type="radio" name="ans4" value="0">
+                            怨傻逼
+                        </li>
+                        <li class="list-group-item" data-check="">
+                            <input class="hidden" type="radio" name="ans4" value="30">
+                            怨出这道题的人
+                        </li>
+                    </ul>
+                </div>
+            </div> <!-- 第二道题 End. -->
+            <!-- 第二道题 Start. -->
+            <div class="area">
+                <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
+                    <h3 class="text-center question-title">3、你是傻逼你怨谁?</h3>
+                </div>
+                <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
+
+                    <ul class="list-group text-center" data-optionName="ans4">
+                        <input name="result[]" type="hidden" value="">
+
+                        <li class="list-group-item" data-check="">
+                            <input class="hidden" type="radio" name="ans4" value="20">
+                            怨自己
+                        </li>
+                        <li class="list-group-item" data-check="">
+                            <input class="hidden" type="radio" name="ans4" value="0">
+                            怨傻逼
+                        </li>
+                        <li class="list-group-item" data-check="">
+                            <input class="hidden" type="radio" name="ans4" value="30">
+                            怨出这道题的人
+                        </li>
+                    </ul>
+                </div>
+            </div> <!-- 第二道题 End. -->
+
+
+            <!-- 提交按钮 Start. -->
+            <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 submit">
+                <button type="button" class="btn btn-primary col-xs-12" id="button" data-toggle="modal"
+                        data-target=".bs-example-modal-lg">提交
+                </button>
+            </div> <!-- 提交按钮 End. -->
+
+            <!-- 结果模态框 Start. -->
+            <div class="modal fade bs-example-modal-lg col-xs-10 col-xs-offset-1" tabindex="-1" role="dialog"
+                 aria-labelledby="myLargeModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body text-center">
+                            <div class="page-header">
+                                <h3>恭喜你得了</h3>
+                                <h1 class="text-danger"><span id="show">这里是你的分数</span>&nbsp;分</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- 结果模态框 End. -->
+        </form>
+    </main>
+</div>
+
+<script>
+    (function () {
+        var area = document.querySelectorAll('.area');
+
+        // 实现选项赋值和点击效果
+        for (var a = 0; a < area.length; a++) {
+            var option_arr = area[a].querySelectorAll('li');
+
+            for (var i = 0; i < option_arr.length; i++) {
+                var li = option_arr[i],
+                    option_input = li.querySelector('input');
+
+                li.addEventListener('click', function () {
+                    var option = this.querySelector('input'),
+                        result = this.parentNode.querySelector("[name='result[]']");
+                    // 清除点击过的 li 样式
+                    var option_arr = this.parentNode.querySelectorAll('li');
+                    for (var x = 0; x < option_arr.length; x++) {
+                        option_arr[x].dataset.check = '';
+                    }
+
+                    option.checked = true;
+                    result.value = option.value;
+                    this.dataset.check = 'check';
+                    // console.log(option.checked,result.value);
+                });
+            } // for option_arr End.
+        } // for area End.
+
+
+        // 找到按钮，并绑定点击事件：
+        /*        var btn = document.querySelectorAll('#net');
+                btn.addEventListener('click',function () {
+                    // 声明一个常量:
+                    var x = 0;
+                    // 获取所有的显示项目：
+                    var item_arr = document.querySelectorAll('.area');
+                });
+                console.log(btn);*/
+
+
+        /*        // 返回数据操作
+                function result() {
+                    var http = new XMLHttpRequest(),
+                        show = document.getElementById("show");
+                    http.onreadystatechange = function () {
+                        if (http.readyState == 4 && http.status == 200) {
+                            show.innerHTML = http.responseText;
+                        }
+                        else {
+                            show.innerHTML = '失败';
+                        }
+                    };
+                    http.open('post',"index.php",true);
+                    http.send();
+                }*/
+        //document.querySelector('#button').addEventListener('click',result);
+
+    })();
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script>
+    function result() {
+        var values = $("[name='result[]']"),
+            result = [];
+
+        values.each(function (i) {
+            result[i] = $(this).val();
+        });
+
+        $.post("/index.php/Rec/Index/answer.html", {result: result}, function (res) {
+            $('#show').html(res);
+        });
+    }
+
+    document.querySelector('#button').addEventListener('click', result);
+</script>
+<script>
+    (function () {
+        var question = $(".area"),
+            currentOrder = 0,
+            height = $(window).height() - $(".header").height(),
+            lastStep = $("header a"),
+            submitBtn = $(".submit");
+
+        submitBtn.css('opacity', 0);
+
+        question.height(height)
+            .addClass("bg-hidden")
+        .first().removeClass("bg-hidden")
+            .addClass("bg-display");
+
+        question.each(function () {
+            var block = $(this),
+                option = block.find("li");
+
+            option.click(function () {
+                currentOrder = currentOrder +1;
+                lastStep.css('opacity','1');
+                submitBtn.css('opacity', 1);
+
+                block.removeClass("bg-display")
+                    .addClass('bg-hidden')
+                .next().removeClass("bg-hidden")
+                    .addClass('bg-display');
+                $(document).scrollTop(currentOrder*height);
+            });
+        });
+
+        lastStep.click(function () {
+            if( currentOrder > 0 ) currentOrder -= 1;
+            if( currentOrder == 0 ) {
+                $(this).css("opacity",'0');
+                submitBtn.css('opacity', 0);
+            }
+
+            question.eq(currentOrder).removeClass("bg-hidden")
+                .addClass('bg-display')
+                .next().removeClass("bg-display")
+                .addClass('bg-hidden');
+
+            $(document).scrollTop(currentOrder*height);
+            console.log(currentOrder);
+        }).css('opacity','0');
+
+    })();
+</script>
+</body>
+</html>

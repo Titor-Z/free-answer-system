@@ -100,9 +100,6 @@ class SubjectItemController extends Controller
 
     # ################################################## #
 
-    /*
-     *
-     */
     public function del() {
         $item_arr = I('POST.check/a');
         if ($item_arr) {
@@ -111,13 +108,12 @@ class SubjectItemController extends Controller
                     'state' => '0',
                     'id'    => $val
                 ]);
-            }
-
-            if ($result === false){
-                $this->error('删除失败，请稍后重试');
-            }
-            else {
-                $this->success('删除成功，正在跳转中。。');
+                if ($result === false){
+                    $this->error('删除失败，请稍后重试');
+                }
+                else {
+                    $this->success('删除成功，正在跳转中。。');
+                }
             }
         }
         else {

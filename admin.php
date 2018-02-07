@@ -11,7 +11,7 @@ define('APP_PATH','./App/');
 # 关闭自动生成安全文件
 define('BUILD_DIR_SECURE', true);
 
-define('BIND_MODULE','Rec');
+define('BIND_MODULE','Home');
 
 # 引入ThinkPHP入口文件
 require './ThinkPHP/ThinkPHP.php';

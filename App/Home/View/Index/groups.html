@@ -41,10 +41,22 @@
                 <a href="#" class="list-group-item">用户分组</a>
                 <a href="{:U('Index/replace')}" class="list-group-item">{$SelfGroup}</a>
                 <?php for($i=0; $i< count($GroupResults); $i++) { ?>
-                    <a href="{:U('Index/groups?gid='.$GroupResults[$i]['id'])}" class="list-group-item">{$GroupResults[$i]['name']}</a>
+                <a href="{:U('Index/groups?gid='.$GroupResults[$i]['id'])}" class="list-group-item">{$GroupResults[$i]['name']}</a>
                 <?php } ?>
             </ul>
         </div> <!-- left End. -->
+
+
+        <div class="col-sm-3 col-sm-o">
+            <div class="list-group">
+                <?php for($i=0; $i<count($users); $i++) { ?>
+                <a href="{:U('users?gid='.$users[$i][group].'&uid='.$users[$i][id])}" class="list-group-item">
+                    <h4 class="list-group-item-heading">{$users[$i][username]}</h4>
+                    <p class="list-group-item-text">{$users[$i][mobile]}</p>
+                </a>
+                <?php } ?>
+            </div>
+        </div>
     </div>
 
 </div>

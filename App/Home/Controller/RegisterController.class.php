@@ -15,6 +15,7 @@ class RegisterController extends Controller {
         if ($state){
             $data['email'] = I('POST.email');
             $data['password'] = I('POST.pasd');
+            $data['group'] = 1;
 
             $result = M('users')->add($data);
             if($result === false){

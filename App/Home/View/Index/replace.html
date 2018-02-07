@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用户管理·个人信息</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        :disabled {
+            background: none !important;
+            border: 0;
+            box-shadow: none;
+            cursor: text !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Management</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="{:U('Home/Index/index')}">首页</a></li>
+                    <li class="active"><a href="{:U('Home/Index/index')}">用户管理</a></li>
+                    <li><a href="{:U('Subject/index')}">答题</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav pull-right">
+                    <li><a>欢迎 {$user}</a></li>
+                    <li><a href="{:U('Login/logout')}">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </header> <!-- header End. -->
+
+    <div class="row">
+        <!-- left Start. -->
+        <div class="col-sm-3">
+            <ul class="list-group">
+                <a href="#" class="list-group-item">用户分组</a>
+                <a href="{:U('Index/replace')}" class="list-group-item">{$SelfGroup}</a>
+                <?php for($i=0; $i< count($GroupResults); $i++) { ?>
+                <a href="{:U('Index/groups?gid='.$GroupResults[$i]['id'])}" class="list-group-item">{$GroupResults[$i]['name']}</a>
+                <?php } ?>
+            </ul>
+        </div> <!-- left End. -->
+
+
+        <!-- Right Start. -->
+        <div class="col-sm-6 col-sm-offset-1">
+            <form class="form-horizontal" name="userInformation" method="post" action="{:U('userUpdate')}">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">ID</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">{$userID}</p>
+                        <input type="hidden" class="form-control form-control-static" name="id" value="{$userID}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="username">姓名</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="username" name="username" value="{$userResult[username]}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="mobile">手机号</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="mobile" name="mobile" value="{$userResult[mobile]}" placeholder="请输入11位手机号码">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="email">邮箱</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="email" name="email" value="{$userResult[email]}" disabled placeholder="邮箱是你登陆后台的唯一凭据，请谨慎修改">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="sex">性别</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="sex" name="sex">
+                            <option value="1">男</option>
+                            <option value="0">女</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="age">年龄</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="age" name="age" value="{$userResult[age]}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="password">密码</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="password" name="password" placeholder="如果要修改密码，请在这里输入新密码">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-10 col-sm-offset-2">
+                        <button type="submit" class="btn btn-primary">修改个人信息</button>
+                    </div>
+                </div>
+            </form>
+        </div> <!-- Right End. -->
+
+    </div>
+
+</div>
+
+
+</body>
+</html>

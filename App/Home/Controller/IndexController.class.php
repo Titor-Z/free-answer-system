@@ -5,37 +5,39 @@ use Think\Controller,
 
 class IndexController extends Controller {
 
-    ### 默认加载 动作：
-    public function index() {
+    public function basic() {
         $this->userID = session('USER');
 
         if($this->userID == '') $this->redirect('Login/index');
 
         # 将查询句柄赋值给 result对象：
         # - 以方便在接下来使用
-        $this->result = M('users')->where("id=%u",$this->userID)->find();
+        $result = M('users')->where("id=%u",$this->userID)->find();
+        $GID = $result['group'];
 
+        if ($GID == 0) {
+            $GroupResults = M('group')->where('id > 0')->select();
+        }
 
-        ### 分组操作
-        $user_groups = M('group')->select();
-        $id_group = array_column($user_groups, 'id');
-        $name_group = array_column($user_groups, 'name');
+        if ($GID == 1) {
+            $GroupResults = M('group')->where('id > 1')->select();
+        }
 
-        # 将查询出来的2维数组，变为正常使用的1维数组
-        $groups=array_combine($id_group,$name_group);
-
-
-        ### 输出操作
-        $this->assign([
-            'userID'    => $this->result['id'],
-            'userName'  => $this->result['username'],
-            'userEmail' => $this->result['email'],
-            'userSex'   => $this->result['sex'],
-            'userGroup' => $this->result['group']
-        ])->display();
+        return $this->assign([
+            'GroupResults' => $GroupResults,
+            'SelfGroup' => '个人信息',
+            'id' => $this->userID,
+            'user' => $result['username']
+        ]);
     }
 
-    # 用户信息更新 动作：
+    # ######################### 默认加载 动作：########################## #
+    public function index() {
+        $this->basic()
+            ->display();
+    }
+
+    # ################### 用户信息更新 动作： ##################### #
     public function userUpdate() {
 
         $result = M('users')->where("id=%s",I('POST.id'))->find();
@@ -55,6 +57,7 @@ class IndexController extends Controller {
             'sex' => I('POST.sex'),
             'group' => I('POST.group'),
             'password' => $password,
+            'age'   => I('post.age'),
         ];
 
         $userID = I('POST.id');
@@ -66,6 +69,53 @@ class IndexController extends Controller {
             $this->success('更新完成',U('index?group=1&user=true'));
         }
     }
+
+
+    # ####################  Groups  #################### #
+    public function groupBasic($id) {
+        $this->basic();
+        # search users list results:
+        $users = M('users')->where('`group`=%s',$id)->select();
+
+        return $this->assign([
+            'users' => $users,
+        ]);
+    }
+
+
+    public function groups($gid) {
+        $this->groupBasic($gid);
+        $this->display();
+    }
+
+
+    # ####################  Users information  #################### #
+    public function users($gid = '',$uid = '') {
+
+        $this->groupBasic($gid);
+        # search the user information:
+        $userResult = M('users')->where('id=%s',$uid)->find();
+        if($userResult['sex'] ==1 ){
+            $userResult['sex'] = '男';
+        }
+        else {
+            $userResult['sex'] = '女';
+        }
+        $this->assign('userResult',$userResult)->display();
+    }
+
+
+    public function replace() {
+
+        $result = M('users')->where('id=%s',session('USER'))->find();
+
+        $this->basic();
+        $this->assign([
+            'userResult' => $result
+        ])->display();
+    }
+
+
 
 
 }
