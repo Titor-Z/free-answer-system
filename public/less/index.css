@@ -1,0 +1,82 @@
+body {
+  overflow-x: hidden;
+}
+.test {
+  border: 1px solid red;
+}
+.no-radius {
+  border-radius: 0;
+  box-shadow: none !important;
+}
+.border-only-left {
+  border-bottom: 0;
+  border-right: 0;
+  border-top: 0;
+  border-radius: 0;
+  box-shadow: none !important;
+}
+.border-only-right {
+  border-bottom: 0;
+  border-left: 0;
+  border-top: 0;
+  border-radius: 0;
+  box-shadow: none !important;
+}
+.border-only-top {
+  border-bottom: 0;
+  border-right: 0;
+  border-left: 0;
+  border-radius: 0;
+  box-shadow: none !important;
+}
+.border-only-bottom {
+  border-right: 0;
+  border-left: 0;
+  border-top: 0;
+  border-radius: 0;
+  box-shadow: none !important;
+}
+.side-nav {
+  height: 45rem;
+  padding: 0;
+}
+.side-nav .nav-item {
+  padding: .2rem 0 .2rem 3rem;
+}
+.side-nav .nav-item:hover,
+.side-nav .nav-item.active {
+  color: #343a40;
+  background: #ffffff;
+}
+.side-nav-dark .nav-item:hover,
+.side-nav-dark .nav-item.active {
+  color: #ffffff;
+  background: #3f474e;
+  border-left: 0.3rem solid #fd7e14;
+  padding-left: 2.7rem;
+}
+.layer {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 10000;
+}
+.layer .user small {
+  font-size: 80% !important;
+}
+.layer .user .info {
+  color: #e9ecef;
+}
+.layer .user .info h3 small {
+  font-size: .6rem;
+}
+.layer .user .portrait {
+  width: 10rem !important;
+  height: 10rem !important;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}

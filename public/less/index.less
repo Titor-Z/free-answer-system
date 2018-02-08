@@ -1,0 +1,101 @@
+@import "variable";
+
+@side-width: 200px;
+@side-nav: side-nav;
+body {overflow-x: hidden}
+.test {
+    border: 1px solid red;
+}
+.no-radius{
+    border-radius: 0;
+    box-shadow: none !important;
+}
+
+.border-only-left{
+    border-bottom: 0;
+    border-right: 0;
+    border-top: 0;
+    .no-radius;
+}
+.border-only-right{
+    border-bottom: 0;
+    border-left: 0;
+    border-top: 0;
+    .no-radius;
+}
+.border-only-top{
+    border-bottom: 0;
+    border-right: 0;
+    border-left: 0;
+    .no-radius;
+}
+.border-only-bottom{
+    border-right: 0;
+    border-left: 0;
+    border-top: 0;
+    .no-radius;
+}
+
+.@{side-nav} {
+    //.test;
+    height: 45rem;
+    padding: 0;
+
+    .nav-item {
+        padding: .2rem 0 .2rem 3rem;
+        &:hover,
+        &.active {
+            color: @dark;
+            background: lighten(@white,5%);
+        }
+    }
+
+    &-dark {
+        .nav-item{
+            &:hover,
+            &.active {
+                color: #ffffff;
+                background: lighten(@dark,5%);
+                border-left: .3rem solid @orange;
+                padding-left: 2.7rem;
+            }
+        }
+    }
+}
+
+
+
+.layer {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: rgba(0,0,0,.8);
+    z-index: 10000;
+
+    .user {
+        small {
+            font-size: 80% !important;
+        }
+            //.test;
+
+        // 个人信息栏目
+        .info {
+            color: @gray-200;
+            h3 {
+                small {
+                    font-size: .6rem;
+                }
+            }
+        }
+        //头像
+        .portrait {
+            width: 10rem !important;
+            height: 10rem !important;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+        }
+    }
+}
